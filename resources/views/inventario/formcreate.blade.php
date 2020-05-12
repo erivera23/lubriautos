@@ -1,6 +1,6 @@
 <div class="form-group">
 <label for="nombre" class="control-label">{{'Nombre'}}</label>
-<input type="text" disabled id="nombre" name='nombre' class="form-control" value='{{ isset($producto->nombre)?$producto->nombre:old("nombre")}}'>
+<input type="text" disabled id="nombre" name='nombre' class="form-control inline-block" value='{{ isset($producto->nombre)?$producto->nombre:old("nombre")}}'>
 </div>
 
 <div class="form-group">
@@ -20,8 +20,8 @@
 {!! $errors->first('cantidad','<div class="invalid-feedback">:message</div>') !!}
 </div>
 
-<input type="hidden" id="tipo" name="tipo" value="{{$Modo=='entrada' ? '1':'0'}}">
+<input type="hidden" id="tipo" name="tipo" value="1">
 <input type="hidden" id="producto_id" name="producto_id" value="{{ isset($producto->id)?$producto->id:old('producto_id') }}">
 
-<input type="submit" class="btn btn-success" value="{{$Modo=='entrada' ? 'Registrar entrada':'Registrar salida'}}">
+<input type="submit" class="btn btn-success" value="Registrar entrada">
 <a href="{{ url('producto') }}" class="btn btn-primary">Regresar</a>

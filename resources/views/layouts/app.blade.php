@@ -74,13 +74,7 @@
                                 <a href="{{ url('productos/create') }}" class="dropdown-item">
                                     Crear producto
                                 </a>
-                                <a href="{{ url('inventario/entrada') }}" class="dropdown-item">
-                                    Entrada producto
-                                </a>
-                                <a href="{{ url('inventario/salida') }}" class="dropdown-item">
-                                    Salida producto
-                                </a>
-                                <a href="{{ url('inventario/existencia') }}" class="dropdown-item">
+                                <a href="{{ url('inventario/') }}" class="dropdown-item">
                                     Ver existencia
                                 </a>
                             </div>

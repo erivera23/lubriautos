@@ -39,7 +39,7 @@ class ClientesController extends Controller
     {
         $campos =[
             'representante' => 'required|string|max:100',
-            'telefono' => 'required|string',
+            'celular' => 'required|string',
             'correo' => 'email'
         ];
 
@@ -89,7 +89,7 @@ class ClientesController extends Controller
         //
         $campos =[
             'representante' => 'required|string|max:100',
-            'telefono' => 'required|string',
+            'celular' => 'required|string',
             'correo' => 'email'
         ];
 

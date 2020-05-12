@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Inventario;
+use App\Productos;
 use Illuminate\Http\Request;
 
 class InventarioController extends Controller
@@ -14,7 +15,7 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        $datos['inventario']= Inventario::paginate(10);
+        $datos['inventario']= Inventario::productos()->paginate(10);
         return view('inventario.index', $datos);
     }
 
@@ -23,20 +24,23 @@ class InventarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //
-        return view('inventario.create');
+        $producto = Productos::findOrFail($id);
+        return view('inventario.create', compact('producto'));
     }
 
-    public function entrada()
+    public function entrada($id)
     {
-        return view('inventario.entrada');
+        $producto = Productos::findOrFail($id);
+        return view('inventario.entrada', compact('producto'));
     }
 
-    public function salida()
+    public function salida($id)
     {
-        return view('inventario.salida');
+        $producto = Productos::findOrFail($id);
+        return view('inventario.salida', compact('producto'));
     }
 
     /**
@@ -87,6 +91,22 @@ class InventarioController extends Controller
     public function update(Request $request, Inventario $inventario)
     {
         //
+    }
+
+    public function storeEntrada(Request $request, $id)
+    {
+        $datos = request()->except('_token');
+        Inventario::insert($datos);
+        Productos::where('id', '=', $id)->increment('existencia', $datos['cantidad']);
+        return redirect('inventario')->with('Mensaje', 'Entrada registrada con exito.');
+    }
+
+    public function storeSalida(Request $request, $id)
+    {
+        $datos = request()->except('_token');
+        Inventario::insert($datos);
+        Productos::where('id','=',$datos['producto_id'])->decrement('existencia', $datos['cantidad']);
+        return redirect('inventario')->with('Mensaje', 'Salida registrada con exito.');
     }
 
     /**

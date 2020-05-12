@@ -16,12 +16,6 @@
 </div>
 
 <div class="form-group">
-<label for="telefono" class="control-label">{{'Telefono'}}</label>
-<input type="text" id="telefono" class="form-control {{$errors->has('telefono')?'is-invalid':''}}" name='telefono' value='{{ isset($cliente->telefono)?$cliente->telefono:old("telefono")}}'>
-{!! $errors->first('telefono','<div class="invalid-feedback">:message</div>') !!}
-</div>
-
-<div class="form-group">
 <label for="celular" class="control-label">{{'Celular'}}</label>
 <input type="text" id="celular" name='celular' class="form-control" value='{{ isset($cliente->celular)?$cliente->celular:old("celular")}}'>
 </div>

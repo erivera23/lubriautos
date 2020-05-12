@@ -1,0 +1,1 @@
+php artisan migrate:refresh ---> Elimina todas las migraciones y las vuelve a realizar

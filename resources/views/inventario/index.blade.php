@@ -7,8 +7,7 @@
         {{ Session::get('Mensaje')}}
     </div>
 @endif
-<a href="{{ url('inventario/create') }}" class="btn btn-success">Agregar producto</a>
-<br><br>
+<h1>Inventario de productos</h1>
 <table class="table table-light table-hover">
     <thead class="thead-light ">
         <tr>
@@ -27,9 +26,10 @@
             <td>{{$producto->codigo}}</td>
             <td>{{$producto->nombre}}</td>
             <td>{{$producto->descripcion}}</td>
-            <td>{{$producto->cantidad}}</td>
+            <td>{{$producto->existencia}}</td>
             <td>
-            <a href="{{ url('/inventario/'.$producto->id.'/edit') }}" class="btn btn-warning">Editar</a>
+            <a href="{{ url('/inventario/'.$producto->producto_id.'/entrada') }}" class="btn btn-primary">+</a>
+            <a href="{{ url('inventario/'.$producto->producto_id.'/salida') }}" class="btn btn-danger">-</a>
             </td>
         </tr>
     @endforeach

@@ -28,6 +28,7 @@
             <td>{{$producto->descripcion}}</td>
             <td>
             <a href="{{ url('/productos/'.$producto->id.'/edit') }}" class="btn btn-warning">Editar</a>
+            <a href="{{url('/inventario/create/'.$producto->id)}}" class="btn btn-success">+</a>
             </td>
         </tr>
     @endforeach

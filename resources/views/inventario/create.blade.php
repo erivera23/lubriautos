@@ -2,14 +2,12 @@
 
 @section('content')
 <div class="container">
-Crear un producto
-
-<form action="{{url('/inventario')}}" method="post" class="form-horizontal">
+<h1>Entrada de productos</h1>
+<form action="{{ url('inventario/entrada/'.$producto->id) }}" method="post">
     {{csrf_field() }}
-    <br>
-    @include('inventario.form', ['Modo'=>'crear'])
-    
+    @include('inventario.formcreate', ['Modo'=>'entrada'])
 </form>
+
 </div>
 
 @endsection

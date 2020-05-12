@@ -17,7 +17,6 @@
             <th>Representante</th>
             <th>RTN</th>
             <th>Empresa</th>
-            <th>Telefono fijo</th>
             <th>Celular</th>
             <th>Correo</th>
             <th>Acciones</th>
@@ -30,7 +29,6 @@
             <td>{{$cliente->representante}}</td>
             <td>{{$cliente->rtn}}</td>
             <td>{{$cliente->empresa}}</td>
-            <td>{{$cliente->telefono}}</td>
             <td>{{$cliente->celular}}</td>
             <td>{{$cliente->correo}}</td>
             <td>

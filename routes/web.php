@@ -34,9 +34,11 @@ Route::patch('productos/{id}', 'ProductosController@update')->name('productos');
 
 //Inventario
 Route::get('/inventario','InventarioController@index')->name('inventario');
-Route::get('/inventario/create', 'InventarioController@create')->name('inventario');
-Route::get('/inventario/entrada', 'InventarioController@entrada')->name('inventario');
-Route::get('/inventario/salida','InventarioController@salida')->name('inventario');
-Route::get('inventario/{id}/edit', 'InventarioController@edit')->name('inventario');
+Route::get('/inventario/create','InventarioController@create')->name('inventario');
+Route::get('/inventario/create/{id}', 'InventarioController@create')->name('inventario');
+Route::get('/inventario/{id}/entrada', 'InventarioController@entrada')->name('inventario');
+Route::get('/inventario/{id}/salida','InventarioController@salida')->name('inventario');
 
+Route::post('/inventario/entrada/{id}', 'InventarioController@storeEntrada')->name('inventario');
+Route::post('/inventario/salida/{id}', 'InventarioController@storeSalida')->name('inventario');
 Route::post('/inventario', 'InventarioController@store')->name('inventario');

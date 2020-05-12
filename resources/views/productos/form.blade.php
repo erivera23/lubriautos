@@ -14,5 +14,17 @@
 {!! $errors->first('descripcion','<div class="invalid-feedback">La descripción es requerido</div>') !!}
 </div>
 
+<div class="form-group">
+    <label for="costo" class="control-label">{{'Costo'}}</label>
+    <input type="number" step="0.01" id="costo" name="costo" class="form-control" value='{{ isset($producto->costo)?$producto->costo:old("costo")}}'>
+</div>
+
+<div class="form-group">
+    <label for="precio" class="control-label">{{'Precio de venta'}}</label>
+    <input type="number" step="0.01" id="precio" name="precio" class="form-control" value='{{ isset($producto->precio)?$producto->precio:old("precio")}}'>
+</div>
+
+<input type="hidden" value="0" id="existencia" name="existencia">
+
 <input type="submit" class="btn btn-success" value="{{$Modo=='crear' ? 'Agregar':'Actualizar'}}">
 <a href="{{ url('productos') }}" class="btn btn-primary">Regresar</a>
