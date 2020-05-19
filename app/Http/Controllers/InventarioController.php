@@ -13,10 +13,24 @@ class InventarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $datos['inventario']= Inventario::productos()->paginate(10);
-        return view('inventario.index', $datos);
+        if($request)
+        {
+            $datos['query'] = request('search');
+            if(strlen($datos['query']) > 0)
+            {
+                $datos['inventario'] = Inventario::productosBy($datos['query'])->paginate(10);
+            } else
+            {
+                $datos['inventario'] = Inventario::productos()->paginate(10);
+            }
+            
+            return view('inventario.index', $datos);
+        }
+
+        //$datos['inventario']= Inventario::productos()->paginate(10);
+        //return view('inventario.index', $datos);
     }
 
     /**

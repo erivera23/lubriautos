@@ -12,11 +12,25 @@ class ProductosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $datos['productos'] = Productos::paginate(10);
-        return view('productos.index', $datos);
+        if($request)
+        {
+            $datos['query'] = request('search');
+            if(strlen($datos['query']) > 0)
+            {
+                $datos['productos'] = Productos::where('nombre', 'LIKE', '%'. $datos['query'] .'%')
+                                                ->orWhere('codigo', 'LIKE', '%'. $datos['query'] .'%')->paginate(10);
+            } else
+            {
+                $datos['productos'] = Productos::paginate(10);
+            }
+            
+            return view('productos.index', $datos);
+        }
+        //$datos['productos'] = Productos::paginate(10);
+        //return view('productos.index', $datos);
     }
 
     /**

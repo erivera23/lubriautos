@@ -22,4 +22,14 @@ class Inventario extends Model
         
         return $productos;
     }
+
+    public static function productosBy($value)
+    {
+        $productos = Inventario::join('productos', 'productos.id', 'inventarios.producto_id')
+                                ->selectRaw('inventarios.producto_id, productos.existencia, productos.nombre, productos.codigo, productos.descripcion')
+                                ->where('productos.nombre', 'LIKE', '%'.$value.'%')
+                                ->groupBy('producto_id');
+
+        return $productos;
+    }
 }

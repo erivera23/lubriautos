@@ -23,7 +23,7 @@ Route::resource('clientes', 'ClientesController')->middleware('auth');
 Auth::routes();
 //Auth::routes(['register'=>false, 'reset'=>false]); invalidar rutas
 
-Route::get('/home', 'ClientesController@index')->name('home');
+Route::get('/home', 'ClientesController@index')->name('clientes');
 
 //Productos
 Route::get('/productos', 'ProductosController@index')->name('productos');
@@ -42,3 +42,7 @@ Route::get('/inventario/{id}/salida','InventarioController@salida')->name('inven
 Route::post('/inventario/entrada/{id}', 'InventarioController@storeEntrada')->name('inventario');
 Route::post('/inventario/salida/{id}', 'InventarioController@storeSalida')->name('inventario');
 Route::post('/inventario', 'InventarioController@store')->name('inventario');
+
+//Clientes
+Route::get('/clientes', 'ClientesController@index')->name('clientes');
+Route::get('/clientes-empresariales', 'ClientesController@indexCompany')->name('clientes');

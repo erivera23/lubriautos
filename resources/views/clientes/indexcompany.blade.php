@@ -29,7 +29,9 @@
     <thead class="thead-light ">
         <tr>
             <th>#</th>
-            <th>Nombre</th>
+            <th>Representante</th>
+            <th>RTN</th>
+            <th>Empresa</th>
             <th>Celular</th>
             <th>Correo</th>
             <th>Acciones</th>
@@ -40,6 +42,8 @@
         <tr>
             <td>{{$loop->iteration}}</td>
             <td>{{$cliente->representante}}</td>
+            <td>{{$cliente->rtn}}</td>
+            <td>{{$cliente->empresa}}</td>
             <td>{{$cliente->celular}}</td>
             <td>{{$cliente->correo}}</td>
             <td>

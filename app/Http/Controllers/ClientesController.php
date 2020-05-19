@@ -12,11 +12,45 @@ class ClientesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $datos['clientes']= Clientes::paginate(10);
-        return view('clientes.index', $datos);
+        if($request)
+        {
+            $datos['query'] = request('search');
+            if(strlen($datos['query']) > 0)
+            {
+                $datos['clientes'] = Clientes::where('empresarial', '=', 0)
+                                             ->where('representante', 'LIKE', '%'. $datos['query'] .'%')
+                                             ->paginate(10);
+            } else
+            {
+                $datos['clientes'] = Clientes::where('empresarial', '=', 0)->paginate(10);
+            }
+            
+            return view('clientes.index', $datos);
+        }
+
+        //$datos['clientes']= Clientes::paginate(10);
+        //return view('clientes.index', $datos);
+    }
+
+    public function indexCompany(Request $request)
+    {
+        if($request)
+        {
+            $datos['query'] = request('search');
+            if(strlen($datos['query']) > 0)
+            {
+                $datos['clientes'] = Clientes::where('empresarial', '=', 1)
+                                               ->where('representante', 'LIKE', '%'. $datos['query'] .'%')
+                                               ->paginate(10);
+            } else 
+            {
+                $datos['clientes'] = Clientes::where('empresarial', '=', 1)->paginate(10);
+            }
+
+            return view('clientes.indexcompany', $datos);
+        }
     }
 
     /**

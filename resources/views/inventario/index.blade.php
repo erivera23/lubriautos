@@ -7,7 +7,24 @@
         {{ Session::get('Mensaje')}}
     </div>
 @endif
-<h1>Inventario de productos</h1>
+
+<div class="row pb-2">
+    <div class="col-md-6">
+        <h1>Inventario de productos</h1>
+    </div>
+    <div class="col-md-3 offset-3">
+        <form>
+            <input name="search" id="search" class="form-control" placeholder="Buscar...">
+        </form>
+    </div>
+</div>
+
+@if($query)
+    <div class="alert alert-primary" role="alert">
+        Tus resultados para la búsqueda de '{{$query}}' son:
+    </div>
+@endif
+
 <table class="table table-light table-hover">
     <thead class="thead-light ">
         <tr>
