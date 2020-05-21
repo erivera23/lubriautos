@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -68,7 +68,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a href="#" id="dropdown3" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Inventario
+                                Productos
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a href="{{ url('productos/') }}" class="dropdown-item">
@@ -89,7 +89,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a href="" class="dropdown-item">
+                                <a href="{{ url('pdf/')}}" class="dropdown-item">
                                     Inventario
                                 </a>
                                 <a href="" class="dropdown-item">

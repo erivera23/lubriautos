@@ -1,1 +1,2 @@
 php artisan migrate:refresh ---> Elimina todas las migraciones y las vuelve a realizar
+php artisan vendor:publish ----> Error al generar reporte en pdf

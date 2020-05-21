@@ -11,6 +11,7 @@
     <div class="col-md-3">
         <a href="{{ url('productos/create') }}" class="btn btn-success">Agregar producto</a>
     </div>
+    <img src="../logo.png" alt="">
     <div class="col-md-3 offset-6">
         <form>
             <input name="search" id="search" class="form-control" placeholder="Buscar...">
@@ -31,6 +32,7 @@
             <th>Codigo</th>
             <th>Nombre</th>
             <th>Descripcion</th>
+            <th>Precio</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -41,6 +43,7 @@
             <td>{{$producto->codigo}}</td>
             <td>{{$producto->nombre}}</td>
             <td>{{$producto->descripcion}}</td>
+            <td>{{$producto->precio}}
             <td>
             <a href="{{ url('/productos/'.$producto->id.'/edit') }}" class="btn btn-warning">Editar</a>
             <a href="{{url('/inventario/create/'.$producto->id)}}" class="btn btn-success">+</a>

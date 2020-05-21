@@ -12,7 +12,12 @@
     <div class="col-md-6">
         <h1>Inventario de productos</h1>
     </div>
-    <div class="col-md-3 offset-3">
+    <div class="col-md-3">
+    <a href="{{ url('pdf/')}}" target="_blank" class="btn btn-primary float-right" >
+            PDF
+        </a>
+    </div>
+    <div class="col-md-3">
         <form>
             <input name="search" id="search" class="form-control" placeholder="Buscar...">
         </form>

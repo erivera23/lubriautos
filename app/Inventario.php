@@ -23,11 +23,21 @@ class Inventario extends Model
         return $productos;
     }
 
+    public static function reporteInventario()
+    {
+        $productos = Inventario::join('productos','productos.id','inventarios.producto_id')
+                                ->selectRaw('inventarios.producto_id, productos.existencia, productos.nombre, productos.codigo, productos.descripcion')
+                                ->orderBy('productos.existencia')
+                                ->groupBy('producto_id');
+        
+        return $productos;
+    }
+
     public static function productosBy($value)
     {
         $productos = Inventario::join('productos', 'productos.id', 'inventarios.producto_id')
                                 ->selectRaw('inventarios.producto_id, productos.existencia, productos.nombre, productos.codigo, productos.descripcion')
-                                ->where('productos.nombre', 'LIKE', '%'.$value.'%')
+                                ->where('productos.nombre', 'LIKE', '%'.$value.'%')->orWhere('productos.codigo', '=', $value)
                                 ->groupBy('producto_id');
 
         return $productos;

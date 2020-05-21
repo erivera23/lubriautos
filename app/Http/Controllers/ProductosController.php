@@ -41,6 +41,7 @@ class ProductosController extends Controller
     public function create()
     {
         //
+        $this->middleware('auth');
         return view('productos.create');
     }
 
@@ -53,6 +54,8 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         //
+        $this->middleware('auth');
+
         $datosProducto = request()->except('_token');
         Productos::insert($datosProducto);
         return redirect('productos')->with('Mensaje', 'Producto agregado con exito.');
