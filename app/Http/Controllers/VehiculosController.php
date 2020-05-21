@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Vehiculos;
+use App\Clientes;
 use Illuminate\Http\Request;
 
 class VehiculosController extends Controller
@@ -12,9 +13,22 @@ class VehiculosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        if($request)
+        {
+            $datos['query'] = request('search');
+            if(strlen($datos['query']) > 0)
+            {
+                $datos['vehiculos'] = Vehiculos::paginate(10);
+            } else
+            {
+                $datos['vehiculos'] = Vehiculos::paginate(10);
+            }
+            
+            return view('vehiculos.index', $datos);
+        }
     }
 
     /**
@@ -25,6 +39,14 @@ class VehiculosController extends Controller
     public function create()
     {
         //
+
+        return view('vehiculos.create');
+    }
+
+    public function datosCliente($id)
+    {
+        $cliente = Clientes::findOrFail($id);
+        return view('vehiculos.create', compact('cliente'));
     }
 
     /**

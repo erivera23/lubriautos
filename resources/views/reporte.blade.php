@@ -42,7 +42,11 @@
 </head>
 <body>
     <div class="">
-        <h1 class='text-center'>Lubriauto</h1>
+            
+        <div class="text-right">
+            <img src="{{ asset('images/logo.png') }}" class="rounded" width="50px" height="50px" alt="Logo de lubriauto">
+        </div>
+        <h2 class="text-center">Lubriauto</h2>
         
         <div class="row">
             <div class="col text-center">

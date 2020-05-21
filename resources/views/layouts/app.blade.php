@@ -56,7 +56,7 @@
                                 Vehiculos
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a href="" class="dropdown-item">
+                                <a href="{{ url('vehiculos/')}}" class="dropdown-item">
                                     Listar
                                 </a>
                                 <a href="" class="dropdown-item">
@@ -89,7 +89,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a href="{{ url('pdf/')}}" class="dropdown-item">
+                                <a href="{{ url('pdf/')}}" target="_blank" class="dropdown-item">
                                     Inventario
                                 </a>
                                 <a href="" class="dropdown-item">

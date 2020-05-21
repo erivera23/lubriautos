@@ -46,10 +46,13 @@ Route::post('/inventario', 'InventarioController@store')->name('inventario');
 
 //Clientes
 Route::get('/clientes', 'ClientesController@index')->name('clientes');
+Route::get('/clientes-busqueda', 'ClientesController@busqueda')->name('clientes')->middleware('auth');
 Route::get('/clientes-empresariales', 'ClientesController@indexCompany')->name('clientes');
 
 //Vehiculos
-
+Route::get('/vehiculos', 'VehiculosController@index')->name('vehiculos');
+Route::get('/vehiculos/create', 'VehiculosController@create')->name('vehiculos')->middleware('auth');
+Route::get('/vehiculos/create/{id}', 'VehiculosController@datosCliente')->name('vehiculos')->middleware('auth');
 
 //Reportes
 Route::get('/pdf', 'ReportesController@generar');

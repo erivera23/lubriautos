@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
 @if(Session::has('Mensaje'))
     <div class="alert alert-success" role="alert">
@@ -8,11 +9,7 @@
     </div>
 @endif
 <div class="row pb-2">
-    <div class="col-md-3">
-        <a href="{{ url('productos/create') }}" class="btn btn-success">Agregar producto</a>
-    </div>
-    
-    <div class="col-md-3 offset-6">
+    <div class="col-md-6">
         <form>
             <input name="search" id="search" class="form-control" placeholder="Buscar...">
         </form>
@@ -29,31 +26,28 @@
     <thead class="thead-light ">
         <tr>
             <th>#</th>
-            <th>Codigo</th>
             <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Precio</th>
+            <th>Celular</th>
+            <th>Correo</th>
             <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-    @foreach($productos as $producto)
+    @foreach($clientes as $cliente)
         <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$producto->codigo}}</td>
-            <td>{{$producto->nombre}}</td>
-            <td>{{$producto->descripcion}}</td>
-            <td>{{$producto->precio}}
+            <td>{{$cliente->representante}}</td>
+            <td>{{$cliente->celular}}</td>
+            <td>{{$cliente->correo}}</td>
             <td>
-            <a href="{{ url('/productos/'.$producto->id.'/edit') }}" class="btn btn-warning">Editar</a>
-            <a href="{{url('/inventario/create/'.$producto->id)}}" class="btn btn-success">+</a>
+            <a href="{{ url('/vehiculos/create/'.$cliente->id) }}" class="btn btn-warning">Seleccionar</a>
             </td>
         </tr>
     @endforeach
     </tbody>
 </table>
 
-{{ $productos->links() }}
+{{ $clientes ?? '' ->links() }}
 </div>
 
 @endsection

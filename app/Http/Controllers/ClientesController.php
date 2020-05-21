@@ -53,6 +53,25 @@ class ClientesController extends Controller
         }
     }
 
+    public function busqueda(Request $request)
+    {
+        if($request)
+        {
+            $datos['query'] = request('search');
+            if(strlen($datos['query']) > 0)
+            {
+                $datos['clientes'] = Clientes::where('representante', 'LIKE', '%'. $datos['query'] .'%')
+                                               ->orWhere('empresa', 'LIKE', '%'. $datos['query'] .'%')
+                                               ->paginate(10);
+            } else 
+            {
+                $datos['clientes'] = Clientes::paginate(10);
+            }
+
+            return view('clientes.buscar', $datos);
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -109,6 +128,12 @@ class ClientesController extends Controller
         //
         $cliente = Clientes::findOrFail($id);
         return view('clientes.edit', compact('cliente'));
+    }
+
+    public function datosCliente($id)
+    {
+        $cliente = Cliente::findOrFail($id);
+        return view('vehiculos.create', compact('cliente'));
     }
 
     /**
