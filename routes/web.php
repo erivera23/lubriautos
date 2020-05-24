@@ -53,6 +53,7 @@ Route::get('/clientes-empresariales', 'ClientesController@indexCompany')->name('
 Route::get('/vehiculos', 'VehiculosController@index')->name('vehiculos');
 Route::get('/vehiculos/create', 'VehiculosController@create')->name('vehiculos')->middleware('auth');
 Route::get('/vehiculos/create/{id}', 'VehiculosController@datosCliente')->name('vehiculos')->middleware('auth');
+Route::post('/vehiculos', 'VehiculosController@store')->name('vehiculos');
 
 //Reportes
 Route::get('/pdf', 'ReportesController@generar');

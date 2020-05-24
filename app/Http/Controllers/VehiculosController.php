@@ -58,6 +58,19 @@ class VehiculosController extends Controller
     public function store(Request $request)
     {
         //
+        $campos =[
+            'tipo' => 'required|string|max:50',
+            'placa' => 'required|string',
+            'anio' => 'required'
+        ];
+
+        $Mensaje=['required'=>'El :attribute es requerido'];
+
+        $this->validate($request,$campos,$Mensaje);
+
+        $vehiculo = request()->except(['_token', 'representante']);
+        Vehiculos::insert($vehiculo);
+        return redirect('vehiculos')->with('Mensaje', 'Vehiculo agregado con éxito.');
     }
 
     /**

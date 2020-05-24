@@ -59,7 +59,7 @@
                                 <a href="{{ url('vehiculos/')}}" class="dropdown-item">
                                     Listar
                                 </a>
-                                <a href="" class="dropdown-item">
+                                <a href="{{ url('vehiculos/create')}}" class="dropdown-item">
                                     Crear
                                 </a>
                             </div>

@@ -15,29 +15,29 @@
     <input type="text" readonly id="representante" name='representante' class="form-control" value='{{ isset($cliente->representante)?$cliente->representante:old("representante")}}'>
 @endif
 
-    <input type="hidden" class="form-control" id="idCliente" name="idCliente" value="{{ isset($cliente->id)?$cliente->id:old('id')}}">
+    <input type="hidden" class="form-control" id="cliente_id" name="cliente_id" value="{{ isset($cliente->id)?$cliente->id:old('id')}}">
 </div>
 
 <!-- Form -->
 <div class="form-group">
-<label for="rtn" class="control-label">{{'Tipo'}}</label>
-<input type="text" id="rtn" name='rtn' class="form-control" value='{{ isset($vehiculo->tipo)?$vehiculo->tipo:old("tipo")}}'>
+<label for="tipo" class="control-label">{{'Tipo'}}</label>
+<input type="text" id="tipo" name='tipo' class="form-control" value='{{ isset($vehiculo->tipo)?$vehiculo->tipo:old("tipo")}}'>
 </div>
 
 <div class="form-group">
-<label for="empresa" class="control-label">{{'Descripcion'}}</label>
-<input type="text" id="empresa" name='empresa' class="form-control" value='{{ isset($cliente->descripcion)?$cliente->descripcion:old("descripcion")}}'>
+<label for="descripcion" class="control-label">{{'Descripcion'}}</label>
+<input type="text" id="descipcion" name='descripcion' class="form-control" value='{{ isset($vehiculo->descripcion)?$vehiculo->descripcion:old("descripcion")}}'>
 </div>
 
 <div class="form-group">
-<label for="representante" class="control-label ">{{'Placa'}}</label>
-<input type="text" id="" name='representante' class="form-control {{$errors->has('placa')?'is-invalid':''}}" value='{{ isset($cliente->placa)?$cliente->placa:old("placa")}}'>
+<label for="placa" class="control-label ">{{'Placa'}}</label>
+<input type="text" id="placa" name='placa' class="form-control {{$errors->has('placa')?'is-invalid':''}}" value='{{ isset($vehiculo->placa)?$vehiculo->placa:old("placa")}}'>
 {!! $errors->first('representante','<div class="invalid-feedback">El nombre es requerido</div>') !!}
 </div>
 
 <div class="form-group">
-<label for="celular" class="control-label">{{'Año'}}</label>
-<input type="text" id="celular" name='celular' class="form-control" value='{{ isset($cliente->anio)?$cliente->anio:old("anio")}}'>
+<label for="anio" class="control-label">{{'Año'}}</label>
+<input type="text" id="anio" name='anio' class="form-control" value='{{ isset($vehiculo->anio)?$vehiculo->anio:old("anio")}}'>
 </div>
 
 <input type="submit" class="btn btn-success" value="{{$Modo=='crear' ? 'Agregar':'Actualizar'}}">
