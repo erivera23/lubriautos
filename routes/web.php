@@ -54,6 +54,10 @@ Route::get('/vehiculos', 'VehiculosController@index')->name('vehiculos');
 Route::get('/vehiculos/create', 'VehiculosController@create')->name('vehiculos')->middleware('auth');
 Route::get('/vehiculos/create/{id}', 'VehiculosController@datosCliente')->name('vehiculos')->middleware('auth');
 Route::post('/vehiculos', 'VehiculosController@store')->name('vehiculos');
+Route::patch('/vehiculos/{id}', 'VehiculosController@update')->name('vehiculos');
+Route::get('/vehiculos/{id}/edit', 'VehiculosController@edit')->name('vehiculos');
+Route::get('/vehiculos-empresas', 'VehiculosController@indexCompany')->name('vehiculos');
+
 
 //Reportes
 Route::get('/pdf', 'ReportesController@generar');

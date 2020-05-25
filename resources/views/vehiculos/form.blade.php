@@ -1,10 +1,9 @@
+@if($Modo == 'crear')
 @empty($cliente)
 <a class="btn btn-primary" href="{{ url('/clientes-busqueda') }}">
   Buscar Cliente
 </a>
 @endempty
-
-
 
 <div class="form-group">
 @if($cliente->empresarial??'' == '1')
@@ -17,6 +16,8 @@
 
     <input type="hidden" class="form-control" id="cliente_id" name="cliente_id" value="{{ isset($cliente->id)?$cliente->id:old('id')}}">
 </div>
+
+@endif
 
 <!-- Form -->
 <div class="form-group">

@@ -57,7 +57,10 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a href="{{ url('vehiculos/')}}" class="dropdown-item">
-                                    Listar
+                                    Particulares
+                                </a>
+                                <a href="{{ url('vehiculos-empresas') }}" class='dropdown-item'>
+                                    Empresariales
                                 </a>
                                 <a href="{{ url('vehiculos/create')}}" class="dropdown-item">
                                     Crear

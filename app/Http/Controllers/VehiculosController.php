@@ -21,13 +21,30 @@ class VehiculosController extends Controller
             $datos['query'] = request('search');
             if(strlen($datos['query']) > 0)
             {
-                $datos['vehiculos'] = Vehiculos::paginate(10);
+                $datos['vehiculos'] = Vehiculos::busqueda($datos['query'])->paginate(10);
             } else
             {
-                $datos['vehiculos'] = Vehiculos::paginate(10);
+                $datos['vehiculos'] = Vehiculos::vehiculos()->paginate(10);
             }
             
             return view('vehiculos.index', $datos);
+        }
+    }
+
+    public function indexCompany(Request $request)
+    {
+        if($request)
+        {
+            $datos['query'] = request('search');
+            if(strlen($datos['query']) > 0)
+            {
+                $datos['vehiculos'] = Vehiculos::busquedaCompany($datos['query'])->paginate(10);
+            } else 
+            {
+                $datos['vehiculos'] = Vehiculos::vehiculosCompany()->paginate(10);
+            }
+
+            return view('vehiculos.indexCompany', $datos);
         }
     }
 
@@ -90,9 +107,11 @@ class VehiculosController extends Controller
      * @param  \App\Vehiculos  $vehiculos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vehiculos $vehiculos)
+    public function edit($id)
     {
         //
+        $vehiculo = Vehiculos::findOrFail($id);
+        return view('vehiculos.edit', compact('vehiculo'));
     }
 
     /**
@@ -102,9 +121,13 @@ class VehiculosController extends Controller
      * @param  \App\Vehiculos  $vehiculos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vehiculos $vehiculos)
+    public function update(Request $request, $id)
     {
         //
+        $datos = request()->except(['_token','_method']);
+        Vehiculos::where('id','=',$id)->update($datos);
+
+        return redirect('vehiculos')->with('Mensaje', 'Vehiculo actualizado con exito.');
     }
 
     /**
