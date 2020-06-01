@@ -15,9 +15,24 @@
 </div>
 
 <div class="form-group">
-<label for="cantidad" class="control-label">{{'Cantidad'}}</label>
-<input type="number" id="cantidad" class="form-control {{$errors->has('cantidad')?'is-invalid':''}}" name='cantidad' value='{{ isset($producto->cantidad)?$producto->cantidad:old("cantidad")}}'>
-{!! $errors->first('cantidad','<div class="invalid-feedback">:message</div>') !!}
+    <label for="cantidad" class="control-label">{{'Cantidad'}}</label>
+    <input type="number" id="cantidad" class="form-control {{$errors->has('cantidad')?'is-invalid':''}}" name='cantidad' value='{{ isset($producto->cantidad)?$producto->cantidad:old("cantidad")}}'>
+    {!! $errors->first('cantidad','<div class="invalid-feedback">:message</div>') !!}
+</div>
+
+<div class="form-group">
+    <label for="concepto" class="control-label">{{'Concepto'}}</label>
+    <input type="text" class="form-control" name="concepto" value="{{ isset($producto->concepto)?$producto->concepto:old('concepto') }}">
+</div>
+
+<div class="form-group">
+    <label for="referencia" class="control-label">{{'# Referencia'}}</label>
+    <input type="text" class="form-control" name="referencia" id="referencia" value="{{ isset($producto->referencia)?$producto->referencia:old('referencia') }}">
+</div>
+
+<div class="form-group">
+    <label for="fecha"></label>
+    <input type="date" class="form-control" name="fecha">
 </div>
 
 <input type="hidden" id="tipo" name="tipo" value="1">

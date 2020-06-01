@@ -17,7 +17,7 @@ class Inventario extends Model
                                         ->select('productos.id','productos.nombre','productos.codigo','productos.descripcion','productos.existencia')
                                         ->groupby('productos_id'); */
         $productos = Inventario::join('productos','productos.id','inventarios.producto_id')
-                                ->selectRaw('inventarios.producto_id, productos.existencia, productos.nombre, productos.codigo, productos.descripcion')
+                                ->selectRaw('inventarios.producto_id, productos.existencia, productos.precio, productos.nombre, productos.codigo, productos.descripcion')
                                 ->groupBy('producto_id');
         
         return $productos;
@@ -36,7 +36,7 @@ class Inventario extends Model
     public static function productosBy($value)
     {
         $productos = Inventario::join('productos', 'productos.id', 'inventarios.producto_id')
-                                ->selectRaw('inventarios.producto_id, productos.existencia, productos.nombre, productos.codigo, productos.descripcion')
+                                ->selectRaw('inventarios.producto_id, productos.existencia, productos.precio, productos.nombre, productos.codigo, productos.descripcion')
                                 ->where('productos.nombre', 'LIKE', '%'.$value.'%')->orWhere('productos.codigo', '=', $value)
                                 ->groupBy('producto_id');
 

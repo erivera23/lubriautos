@@ -48,6 +48,22 @@ class VehiculosController extends Controller
         }
     }
 
+    public function vehiculosByClient($id)
+    {
+        $vehiculos = Vehiculos::vehiculosByClient($id)->paginate(10);
+        $cliente = Clientes::getClient($id);
+
+        return view('vehiculos.indexclientes', compact(['vehiculos', 'cliente']));
+    }
+
+    public function vehiculosByCompany($id)
+    {
+        $vehiculos = Vehiculos::vehiculosByCompany($id)->paginate(10);
+        $cliente = Clientes::getClient($id);
+
+        return view('vehiculos.indexcompanies', compact(['vehiculos', 'cliente']));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

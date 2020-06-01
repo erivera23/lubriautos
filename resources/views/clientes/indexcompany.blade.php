@@ -47,7 +47,8 @@
             <td>{{$cliente->celular}}</td>
             <td>{{$cliente->correo}}</td>
             <td>
-            <a href="{{ url('/clientes/'.$cliente->id.'/edit') }}" class="btn btn-warning">Editar</a>
+                <a href="{{ url('/clientes/'.$cliente->id.'/edit') }}" class="btn btn-warning">Editar</a>
+                <a href="{{url('/vehiculos-empresa/'.$cliente->id) }}" class="btn btn-primary">Vehi.</a>
             </td>
         </tr>
     @endforeach

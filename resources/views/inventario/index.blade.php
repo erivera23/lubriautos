@@ -37,6 +37,7 @@
             <th>Codigo</th>
             <th>Nombre</th>
             <th>Descripcion</th>
+            <th>Precio</th>
             <th>Existencia</th>
             <th>Acciones</th>
         </tr>
@@ -48,6 +49,7 @@
             <td>{{$producto->codigo}}</td>
             <td>{{$producto->nombre}}</td>
             <td>{{$producto->descripcion}}</td>
+            <td>{{$producto->precio}}</td>
             <td>{{$producto->existencia}}</td>
             <td>
             <a href="{{ url('/inventario/'.$producto->producto_id.'/entrada') }}" class="btn btn-primary">+</a>

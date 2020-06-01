@@ -57,6 +57,8 @@ Route::post('/vehiculos', 'VehiculosController@store')->name('vehiculos');
 Route::patch('/vehiculos/{id}', 'VehiculosController@update')->name('vehiculos');
 Route::get('/vehiculos/{id}/edit', 'VehiculosController@edit')->name('vehiculos');
 Route::get('/vehiculos-empresas', 'VehiculosController@indexCompany')->name('vehiculos');
+Route::get('/vehiculos-clientes/{id}', 'VehiculosController@vehiculosByClient')->name('vehiculos');
+Route::get('/vehiculos-empresa/{id}', 'VehiculosController@vehiculosByCompany')->name('vehiculos');
 
 
 //Reportes

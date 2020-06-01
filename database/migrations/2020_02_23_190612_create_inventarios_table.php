@@ -18,6 +18,9 @@ class CreateInventariosTable extends Migration
             $table->bigInteger('producto_id');
             $table->integer('cantidad');
             $table->integer('tipo'); //Tipo se refiere a si es entrada o salida de productos. 1=Entrada 0=Salida
+            $table->string('concepto');
+            $table->date('fecha');
+            $table->string('referencia'); //# de referencia de documento (Factura o recibo)
             $table->foreign('producto_id')->references('id')->on('productos');
             
             $table->timestamps();

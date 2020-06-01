@@ -29,6 +29,8 @@ class Vehiculos extends Model
         return $vehiculos;
     }
 
+
+
     public static function vehiculosCompany()
     {
         $vehiculos = Vehiculos::join('clientes', 'clientes.id', 'vehiculos.cliente_id')
@@ -48,6 +50,26 @@ class Vehiculos extends Model
                                 ->orWhere('vehiculos.tipo', 'LIKE', '%'. $value .'%')
                                 ->orWhere('vehiculos.placa','LIKE', '%'. $value .'%')
                                 ->orWhere('vehiculos.anio','LIKE', '%'. $value .'%');
+        return $vehiculos;
+    }
+
+    public static function vehiculosByClient($value)
+    {
+        $vehiculos = Vehiculos::join('clientes', 'clientes.id', 'vehiculos.cliente_id')
+                                ->selectRaw('clientes.empresa, clientes.representante, vehiculos.id, vehiculos.tipo, vehiculos.descripcion, vehiculos.placa, vehiculos.anio')
+                                ->where('clientes.id', '=', $value);
+        
+        return $vehiculos;
+
+    }
+
+    public static function vehiculosByCompany($value)
+    {
+        $vehiculos = Vehiculos::join('clientes', 'clientes.id', 'vehiculos.cliente_id')
+                                ->selectRaw('clientes.empresa, clientes.representante, vehiculos.id, vehiculos.tipo, vehiculos.descripcion, vehiculos.placa, vehiculos.anio')
+                                ->where('clientes.id', '=', $value);
+
+
         return $vehiculos;
     }
 }

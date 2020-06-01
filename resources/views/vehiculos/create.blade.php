@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<h2>Crear vehiculo</h2>
 
 <div class="container">
+<h2>Crear vehiculo</h2>
     @if(count($errors)>0)
     <div class="alert alert-danger" role="alert">
         <ul>
