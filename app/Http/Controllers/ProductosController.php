@@ -53,6 +53,17 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         //
+
+        $campos =[
+            'descripcion' => 'required|string|max:100',
+            'codigo' => 'required|string',
+            'costo' => 'required',
+            'precio' => 'required'
+        ];
+
+        $Mensaje=['required'=>'El :attribute es requerido'];
+
+        $this->validate($request,$campos,$Mensaje);
         
         $datosProducto = request()->except('_token');
         Productos::insert($datosProducto);
