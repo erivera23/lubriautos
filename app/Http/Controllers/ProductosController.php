@@ -67,10 +67,9 @@ class ProductosController extends Controller
 
         if($datosProducto['costo'] == '') $datosProducto['costo'] = 0;
         if($datosProducto['precio'] == '') $datosProducto['precio'] = 0;
-        print($datosProducto['costo']);
-        print_r($datosProducto);
-        //Productos::insert($datosProducto);
-        //return redirect('productos')->with('Mensaje', 'Producto agregado con exito.');
+        
+        Productos::insert($datosProducto);
+        return redirect('productos')->with('Mensaje', 'Producto agregado con exito.');
     }
 
     /**
