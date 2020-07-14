@@ -24,6 +24,8 @@ return [
     | running in. This may determine how you prefer to configure various
     | services the application utilizes. Set this in your ".env" file.
     |
+
+    Syntax error or access violation: 1055 'lubri.productos.existencia' isn't in GROUP BY (SQL: select inventarios.producto_id, productos.existencia, productos.precio, productos.nombre, productos.codigo, productos.descripcion from `inventarios` inner join `productos` on `productos`.`id` = `inventarios`.`producto_id` group by `producto_id` limit 10 offset 0)
     */
 
     'env' => env('APP_ENV', 'production'),
