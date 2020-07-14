@@ -56,9 +56,7 @@ class ProductosController extends Controller
 
         $campos =[
             'descripcion' => 'required|string|max:100',
-            'codigo' => 'required|string',
-            'costo' => 'required',
-            'precio' => 'required'
+            'codigo' => 'required|string'
         ];
 
         $Mensaje=['required'=>'El :attribute es requerido'];
@@ -66,8 +64,13 @@ class ProductosController extends Controller
         $this->validate($request,$campos,$Mensaje);
         
         $datosProducto = request()->except('_token');
-        Productos::insert($datosProducto);
-        return redirect('productos')->with('Mensaje', 'Producto agregado con exito.');
+
+        if($datosProducto['costo'] == '') $datosProducto['costo'] = 0;
+        if($datosProducto['precio'] == '') $datosProducto['precio'] = 0;
+        print($datosProducto['costo']);
+        print_r($datosProducto);
+        //Productos::insert($datosProducto);
+        //return redirect('productos')->with('Mensaje', 'Producto agregado con exito.');
     }
 
     /**

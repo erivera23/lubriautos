@@ -20,8 +20,26 @@
 {!! $errors->first('cantidad','<div class="invalid-feedback">:message</div>') !!}
 </div>
 
+<div class="form-group">
+    <label for="concepto" class="control-label">{{'Concepto'}}</label>
+    <input type="text" class="form-control {{$errors->has('concepto')?'is-invalid':''}}" name="concepto" value="{{ isset($producto->concepto)?$producto->concepto:old('concepto') }}">
+    {!! $errors->first('concepto','<div class="invalid-feedback">:message</div>') !!}
+</div>
+
+<div class="form-group">
+    <label for="referencia" class="control-label">{{'# Referencia'}}</label>
+    <input type="text" class="form-control {{$errors->has('referencia')?'is-invalid':''}}" name="referencia" id="referencia" value="{{ isset($producto->referencia)?$producto->referencia:old('referencia') }}">
+    {!! $errors->first('referencia','<div class="invalid-feedback">:message</div>') !!}
+</div>
+
+<div class="form-group">
+    <label for="fecha"></label>
+    <input type="date" class="form-control {{$errors->has('fecha')?'is-invalid':''}}" name="fecha">
+    {!! $errors->first('fecha','<div class="invalid-feedback">:message</div>') !!}
+</div>
+
 <input type="hidden" id="tipo" name="tipo" value="{{$Modo=='entrada' ? '1':'0'}}">
 <input type="hidden" id="producto_id" name="producto_id" value="{{ isset($producto->id)?$producto->id:old('producto_id') }}">
 
 <input type="submit" class="btn btn-success" value="{{$Modo=='entrada' ? 'Registrar entrada':'Registrar salida'}}">
-<a href="{{ url('producto') }}" class="btn btn-primary">Regresar</a>
+<a href="{{ url('inventario') }}" class="btn btn-primary">Regresar</a>

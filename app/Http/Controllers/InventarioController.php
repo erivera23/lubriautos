@@ -67,6 +67,17 @@ class InventarioController extends Controller
     public function store(Request $request)
     {
         //
+        $campos =[
+            'cantidad' => 'required|string|max:100',
+            'concepto' => 'required|string',
+            'referencia' => 'required|string',
+            'fecha' => 'required|string'
+        ];
+
+        $Mensaje=['required'=>'El :attribute es requerido'];
+
+        $this->validate($request,$campos,$Mensaje);
+        
         $datosProducto = request()->except('_token');
         Inventario::insert($datosProducto);
         return redirect('inventario')->with('Mensaje', 'Producto agregado con exito.');
@@ -110,6 +121,17 @@ class InventarioController extends Controller
 
     public function storeEntrada(Request $request, $id)
     {
+        $campos =[
+            'cantidad' => 'required|string|max:100',
+            'concepto' => 'required|string',
+            'referencia' => 'required|string',
+            'fecha' => 'required|string'
+        ];
+
+        $Mensaje=['required'=>'El :attribute es requerido'];
+
+        $this->validate($request,$campos,$Mensaje);
+
         $datos = request()->except('_token');
         Inventario::insert($datos);
         Productos::where('id', '=', $id)->increment('existencia', $datos['cantidad']);
@@ -118,6 +140,17 @@ class InventarioController extends Controller
 
     public function storeSalida(Request $request, $id)
     {
+        $campos =[
+            'cantidad' => 'required|string|max:100',
+            'concepto' => 'required|string',
+            'referencia' => 'required|string',
+            'fecha' => 'required|string'
+        ];
+
+        $Mensaje=['required'=>'El :attribute es requerido'];
+
+        $this->validate($request,$campos,$Mensaje);
+        
         $datos = request()->except('_token');
         Inventario::insert($datos);
         Productos::where('id','=',$datos['producto_id'])->decrement('existencia', $datos['cantidad']);
