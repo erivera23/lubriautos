@@ -20,8 +20,8 @@ Route::resource('clientes', 'ClientesController')->middleware('auth');
 //Route::get('/clientes', 'ClientesController@index');
 //Route::get('/clientes/crear', 'ClientesController@create');
 
-Auth::routes();
-//Auth::routes(['register'=>false, 'reset'=>false]); //invalidar rutas
+//Auth::routes();
+Auth::routes(['register'=>false, 'reset'=>false]); //invalidar rutas
 
 //HOME
 Route::get('/home', 'InventarioController@index')->name('inventario');

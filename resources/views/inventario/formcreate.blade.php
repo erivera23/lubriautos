@@ -22,17 +22,21 @@
 
 <div class="form-group">
     <label for="concepto" class="control-label">{{'Concepto'}}</label>
-    <input type="text" class="form-control" name="concepto" value="{{ isset($producto->concepto)?$producto->concepto:old('concepto') }}">
+    <input type="text" class="form-control {{$errors->has('concepto')?'is-invalid':''}}" name="concepto" value="{{ isset($producto->concepto)?$producto->concepto:old('concepto') }}">
+    {!! $errors->first('concepto','<div class="invalid-feedback">:message</div>') !!}
+
 </div>
 
 <div class="form-group">
     <label for="referencia" class="control-label">{{'# Referencia'}}</label>
-    <input type="text" class="form-control" name="referencia" id="referencia" value="{{ isset($producto->referencia)?$producto->referencia:old('referencia') }}">
+    <input type="text" class="form-control {{$errors->has('referencia')?'is-invalid':''}}" name="referencia" id="referencia" value="{{ isset($producto->referencia)?$producto->referencia:old('referencia') }}">
+    {!! $errors->first('referencia','<div class="invalid-feedback">:message</div>') !!}
 </div>
 
 <div class="form-group">
     <label for="fecha"></label>
-    <input type="date" class="form-control" name="fecha">
+    <input type="date" class="form-control {{$errors->has('fecha')?'is-invalid':''}}" name="fecha">
+    {!! $errors->first('fecha','<div class="invalid-feedback">:message</div>') !!}
 </div>
 
 <input type="hidden" id="tipo" name="tipo" value="1">

@@ -15,6 +15,11 @@ class CreateRevisionTecnicasTable extends Migration
     {
         Schema::create('revision_tecnicas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->Integer('id_cliente');
+            $table->Integer('id_vehiculo');
+            $table->date('fecha');
+            $table->Integer('id_detalle');
+            //Validar campos
             $table->timestamps();
         });
     }

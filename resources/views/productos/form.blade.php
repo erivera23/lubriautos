@@ -5,7 +5,8 @@
 
 <div class="form-group">
 <label for="codigo" class="control-label">{{'Codigo'}}</label>
-<input type="text" id="codigo" name='codigo' class="form-control" value='{{ isset($producto->codigo)?$producto->codigo:old("codigo")}}'>
+<input type="text" id="codigo" name='codigo' class="form-control {{$errors->has('descripcion')?'is-invalid':''}}" value='{{ isset($producto->codigo)?$producto->codigo:old("codigo")}}'>
+{!! $errors->first('codigo','<div class="invalid-feedback">El código es requerido</div>') !!}
 </div>
 
 <div class="form-group">
@@ -16,12 +17,14 @@
 
 <div class="form-group">
     <label for="costo" class="control-label">{{'Costo'}}</label>
-    <input type="number" step="0.01" id="costo" name="costo" class="form-control" value='{{ isset($producto->costo)?$producto->costo:old("costo")}}'>
+    <input type="number" step="0.01" id="costo" name="costo" class="form-control {{$errors->has('costo')?'is-invalid':''}}" value='{{ isset($producto->costo)?$producto->costo:old("costo")}}'>
+    {!! $errors->first('costo','<div class="invalid-feedback">El costo es requerido</div>') !!}
 </div>
 
 <div class="form-group">
     <label for="precio" class="control-label">{{'Precio de venta'}}</label>
-    <input type="number" step="0.01" id="precio" name="precio" class="form-control" value='{{ isset($producto->precio)?$producto->precio:old("precio")}}'>
+    <input type="number" step="0.01" id="precio" name="precio" class="form-control {{$errors->has('precio')?'is-invalid':''}}" value='{{ isset($producto->precio)?$producto->precio:old("precio")}}'>
+    {!! $errors->first('precio','<div class="invalid-feedback">El precio de venta es requerido</div>') !!}
 </div>
 
 <input type="hidden" value="0" id="existencia" name="existencia">
