@@ -49,7 +49,10 @@
             <td>
             <a href="{{ url('/productos/'.$producto->id.'/edit') }}" class="btn btn-warning">Editar</a>
             <a href="{{url('/inventario/create/'.$producto->id)}}" class="btn btn-success">+</a>
-            <a href="{{ url('inventario/'.$producto->id.'/salida') }}" class="btn btn-danger">-</a>
+            @if($producto->existencia > 0)
+                <a href="{{ url('inventario/'.$producto->id.'/salida') }}" class="btn btn-danger">-</a>
+            @endif
+            
             </td>
         </tr>
     @endforeach
