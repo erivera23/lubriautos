@@ -82,9 +82,9 @@
                                 <a href="{{ url('productos/create') }}" class="dropdown-item">
                                     Crear producto
                                 </a>
-                                <a href="{{ url('inventario/') }}" class="dropdown-item">
+                                <!-- <a href="{{ url('inventario/') }}" class="dropdown-item">
                                     Ver existencia
-                                </a>
+                                </a> -->
                             </div>
 
                         </li>

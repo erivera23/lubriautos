@@ -11,8 +11,14 @@
     <div class="col-md-3">
         <a href="{{ url('productos/create') }}" class="btn btn-success">Agregar producto</a>
     </div>
+
+    <div class="col-md-3 offset-3">
+    <a href="{{ url('pdf/')}}" target="_blank" class="btn btn-primary float-right" >
+            PDF
+        </a>
+    </div>
     
-    <div class="col-md-3 offset-6">
+    <div class="col-md-3">
         <form>
             <input name="search" id="search" class="form-control" placeholder="Buscar...">
         </form>
