@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Inventario;
 use App\Productos;
 use Illuminate\Http\Request;
+use Redirect;
 
 class InventarioController extends Controller
 {
@@ -80,7 +81,7 @@ class InventarioController extends Controller
         
         $datosProducto = request()->except('_token');
         Inventario::insert($datosProducto);
-        return redirect('inventario')->with('Mensaje', 'Producto agregado con exito.');
+        return redirect('productos')->with('Mensaje', 'Producto agregado con exito.');
     }
 
     /**
@@ -135,7 +136,7 @@ class InventarioController extends Controller
         $datos = request()->except('_token');
         Inventario::insert($datos);
         Productos::where('id', '=', $id)->increment('existencia', $datos['cantidad']);
-        return redirect('inventario')->with('Mensaje', 'Entrada registrada con exito.');
+        return redirect('productos')->with('Mensaje', 'Entrada registrada con exito.');
     }
 
     public function storeSalida(Request $request, $id)
@@ -153,8 +154,9 @@ class InventarioController extends Controller
         
         $datos = request()->except('_token');
         Inventario::insert($datos);
-        Productos::where('id','=',$datos['producto_id'])->decrement('existencia', $datos['cantidad']);
-        return redirect('inventario')->with('Mensaje', 'Salida registrada con exito.');
+        Productos::where('id','=',$id)->decrement('existencia', $datos['cantidad']);
+        //return Redirect::back()->with('Mensaje', 'Salida registrada con éxito.');
+        return redirect('productos')->with('Mensaje', 'Salida registrada con exito.');
     }
 
     /**

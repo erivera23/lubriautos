@@ -32,6 +32,7 @@
             <th>Codigo</th>
             <th>Nombre</th>
             <th>Descripcion</th>
+            <th>Existencia</th>
             <th>Precio</th>
             <th>Acciones</th>
         </tr>
@@ -43,10 +44,12 @@
             <td>{{$producto->codigo}}</td>
             <td>{{$producto->nombre}}</td>
             <td>{{$producto->descripcion}}</td>
+            <td>{{$producto->existencia}}</td>
             <td>{{$producto->precio}}
             <td>
             <a href="{{ url('/productos/'.$producto->id.'/edit') }}" class="btn btn-warning">Editar</a>
             <a href="{{url('/inventario/create/'.$producto->id)}}" class="btn btn-success">+</a>
+            <a href="{{ url('inventario/'.$producto->id.'/salida') }}" class="btn btn-danger">-</a>
             </td>
         </tr>
     @endforeach

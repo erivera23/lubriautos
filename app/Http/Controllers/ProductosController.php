@@ -106,8 +106,20 @@ class ProductosController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $campos =[
+            'descripcion' => 'required|string|max:100',
+            'codigo' => 'required|string',
+            'costo' => 'required',
+            'precio'=> 'required'
+        ];
+
+        $Mensaje=['required'=>'El :attribute es requerido'];
+
+        $this->validate($request,$campos,$Mensaje);
         $datos = request()->except(['_token','_method']);
-        Productos::where('id','=',$id)->update($datos);
+        Productos::where('id','=',$id)->update(['codigo' => $datos['codigo'], 'nombre'=> $datos['nombre'],
+                                                'descripcion' => $datos['descripcion'], 'costo' => $datos['costo'],
+                                                'precio' => $datos['precio']]);
 
         return redirect('productos')->with('Mensaje', 'Producto actualizado con exito.');
     }
