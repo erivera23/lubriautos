@@ -16,7 +16,8 @@ class ReportesController extends Controller
 
      public function generar()
      {
-         $productos = Inventario::reporteInventario()->get();
+         $productos = Productos::select('codigo','nombre', 'existencia', 'precio')->get();
+         echo $productos;
          $date = date('d').'/'.date('m').'/'.date('Y');
 
          $view = view('reporte', compact('productos', 'date'))->render();
