@@ -66,6 +66,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Código</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Precio </th>
                     <th scope="col">Existencia</th>
                 </tr>
             </thead>
@@ -75,6 +76,7 @@
                     <th scope="row">{{$loop->iteration}}</td>
                     <td>{{$producto->codigo}}</td>
                     <td>{{$producto->nombre}}</td>
+                    <td>{{$producto->precio}}</td>
                     <td>{{$producto->existencia}}</td>
                 </tr>
             @endforeach

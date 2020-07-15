@@ -27,7 +27,10 @@
     {!! $errors->first('precio','<div class="invalid-feedback">El precio de venta es requerido</div>') !!}
 </div>
 
-<input type="hidden" value="0" id="existencia" name="existencia">
+<div class="form-group">
+    <label for="existencia" class="control-label">{{'Existencia inicial'}}</label>
+    <input type="number" value="0" id="existencia" name="existencia" class="form-control " >
+</div>
 
 <input type="submit" class="btn btn-success" value="{{$Modo=='crear' ? 'Agregar':'Actualizar'}}">
 <a href="{{ url('productos') }}" class="btn btn-primary">Regresar</a>
