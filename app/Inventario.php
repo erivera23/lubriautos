@@ -18,7 +18,7 @@ class Inventario extends Model
                                         ->groupby('productos_id'); */
         $productos = Inventario::join('productos','productos.id','inventarios.producto_id')
                                 ->selectRaw('inventarios.producto_id, productos.existencia, productos.precio, productos.nombre, productos.codigo, productos.descripcion')
-                                ->groupBy('producto_id');
+                                ->groupBy('producto_id', 'productos.existencia', 'productos.precio', 'productos.nombre', 'productos.codigo', 'productos.descripcion');
         
         return $productos;
     }
